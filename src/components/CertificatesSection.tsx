@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CERTIFICATES, Certificate } from '../data/certificates';
 import { RollingIndex } from './RollingIndex';
 import { Award, CheckCircle2, ChevronLeft, ChevronRight, ShieldCheck, ExternalLink, X, Hash } from 'lucide-react';
@@ -10,6 +10,22 @@ import type { Swiper as SwiperType } from 'swiper';
 export const CertificatesSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedCert(null);
+      }
+    };
+    if (selectedCert) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedCert]);
 
   return (
     <section id="certificates" className="py-16 md:py-24 border-b border-[#DCD7CD] bg-[#F6F3EC]">

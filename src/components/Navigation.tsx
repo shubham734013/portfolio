@@ -37,9 +37,13 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
         {/* Zone 1: Brand Wordmark */}
         <motion.a
           href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           whileHover={{ x: 2 }}
           transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-          className="flex items-baseline gap-2 group whitespace-nowrap shrink-0"
+          className="flex items-baseline gap-2 group whitespace-nowrap shrink-0 cursor-pointer"
           aria-label="Shubham Vaishnav portfolio home"
         >
           <span className="font-syne font-extrabold text-base sm:text-lg tracking-tight text-[#141413] group-hover:text-[#D84A27] transition-colors">

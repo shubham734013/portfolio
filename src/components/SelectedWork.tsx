@@ -141,11 +141,13 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onInspectProject }) 
 
           {/* Card 02: Gym Management SaaS (5 Columns Offset Card with Spring Lift) */}
           <motion.div
-            id="gym-management-saas"
+            id={gym.id}
+            data-slug={gym.slug}
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 350, damping: 25 }}
             className="lg:col-span-5 bg-[#EFECE4] border border-[#141413] p-5 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow space-y-6"
           >
+            <span id="gym-management-saas" className="sr-only" />
             {/* Monograph Top Metadata */}
             <div className="space-y-3">
               <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#8A867E] gap-2 border-b border-[#DCD7CD] pb-3">

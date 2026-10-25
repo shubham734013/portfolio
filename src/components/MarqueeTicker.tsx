@@ -19,14 +19,15 @@ const DEFAULT_ITEMS = [
 ];
 
 export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({ items = DEFAULT_ITEMS }) => {
-  const repeated = [...items, ...items, ...items];
+  // Exactly 2 copies for flawless, continuous -50% translateX loop without jumps
+  const repeated = [...items, ...items];
 
   return (
     <div
-      className="border-y border-[#DCD7CD] bg-[#EFECE4] py-2 overflow-hidden select-none whitespace-nowrap relative flex"
+      className="border-y border-[#DCD7CD] bg-[#EFECE4] py-2.5 overflow-hidden select-none whitespace-nowrap relative flex"
       aria-hidden="true"
     >
-      <div className="flex animate-marquee gap-8 items-center text-[11px] font-mono tracking-widest text-[#575550]">
+      <div className="flex animate-marquee gap-8 items-center text-[11px] font-mono tracking-widest text-[#575550] will-change-transform shrink-0">
         {repeated.map((text, idx) => (
           <div key={idx} className="flex items-center gap-8 shrink-0">
             <span className="hover:text-[#D84A27] transition-colors">{text}</span>

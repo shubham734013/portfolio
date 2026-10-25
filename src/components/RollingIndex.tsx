@@ -57,9 +57,10 @@ export const RollingIndex: React.FC<RollingIndexProps> = ({
             aria-hidden="true"
           >
             <span
-              className="flex flex-col transition-transform duration-800 cubic-bezier(0.16,1,0.3,1)"
+              className="flex flex-col will-change-transform"
               style={{
                 transform: hasAnimated ? `translateY(-${targetDigit * 10}%)` : 'translateY(0%)',
+                transition: `transform 900ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 90}ms`,
               }}
             >
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (

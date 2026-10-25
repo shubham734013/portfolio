@@ -3,26 +3,27 @@ import React, { useEffect, useRef, useState } from 'react';
 export const CustomCursor: React.FC = () => {
   const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [enabled, setEnabled] = useState(false);
 
   const cursorRef = useRef<HTMLDivElement>(null);
   const posRef = useRef({ currentX: -100, currentY: -100, targetX: -100, targetY: -100 });
   const animFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // Only activate for devices with fine pointer (mouse/trackpad) and no reduced-motion preference
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (hasTouch || prefersReducedMotion) {
-      setIsTouchDevice(true);
+    if (!isFinePointer || prefersReducedMotion) {
+      setEnabled(false);
       return;
     }
-    setIsTouchDevice(false);
+    setEnabled(true);
 
     const onMouseMove = (e: MouseEvent) => {
       posRef.current.targetX = e.clientX;
       posRef.current.targetY = e.clientY;
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
 
       const target = e.target as HTMLElement | null;
       if (
@@ -32,6 +33,7 @@ export const CustomCursor: React.FC = () => {
           target.closest('input') ||
           target.closest('textarea') ||
           target.closest('[role="button"]') ||
+          target.closest('[role="dialog"]') ||
           target.tagName === 'BUTTON' ||
           target.tagName === 'A')
       ) {
@@ -44,14 +46,13 @@ export const CustomCursor: React.FC = () => {
     const onMouseLeave = () => setIsVisible(false);
     const onMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
     document.addEventListener('mouseleave', onMouseLeave);
     document.addEventListener('mouseenter', onMouseEnter);
 
-    // Spring damping interpolation loop (Lovable/Linear silky smoothness)
     const animate = () => {
       const pos = posRef.current;
-      const ease = 0.22; // smooth spring lag
+      const ease = 0.22;
       pos.currentX += (pos.targetX - pos.currentX) * ease;
       pos.currentY += (pos.targetY - pos.currentY) * ease;
 
@@ -70,9 +71,9 @@ export const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseenter', onMouseEnter);
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isVisible]);
+  }, []);
 
-  if (isTouchDevice || !isVisible) {
+  if (!enabled || !isVisible) {
     return null;
   }
 
@@ -80,18 +81,20 @@ export const CustomCursor: React.FC = () => {
     <div
       ref={cursorRef}
       aria-hidden="true"
-      className="pointer-events-none fixed top-0 left-0 z-50 will-change-transform"
+      className="pointer-events-none fixed top-0 left-0 z-[9999] will-change-transform"
       style={{
         transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
       }}
     >
       <div
-        className={`rounded-full border border-[#D84A27] transition-all duration-200 ease-out ${
+        className={`rounded-full border border-[#D84A27] transition-all duration-200 ease-out flex items-center justify-center ${
           isPointer
             ? 'w-8 h-8 bg-[#D84A27]/20 scale-125'
-            : 'w-2.5 h-2.5 bg-[#D84A27] scale-100'
+            : 'w-3 h-3 bg-[#D84A27] scale-100'
         }`}
-      />
+      >
+        {isPointer && <span className="w-1 h-1 rounded-full bg-[#D84A27]" />}
+      </div>
     </div>
   );
 };

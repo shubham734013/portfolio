@@ -43,30 +43,36 @@ export const AboutSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
-                {/* Visual Avatar / Monogram */}
-                <div className="sm:col-span-4 flex justify-center">
-                  {PROFILE_DATA.avatarUrl ? (
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                {/* Visual Avatar / Engineer Photo Frame */}
+                <div className="sm:col-span-5 flex justify-center">
+                  <div className="relative group p-1 bg-[#F6F3EC] border border-[#141413] shadow-xs">
+                    {/* Corner Crosshairs */}
+                    <span className="absolute -top-1 -left-1 text-[10px] text-[#D84A27] font-mono leading-none select-none">+</span>
+                    <span className="absolute -top-1 -right-1 text-[10px] text-[#D84A27] font-mono leading-none select-none">+</span>
+                    <span className="absolute -bottom-1 -left-1 text-[10px] text-[#D84A27] font-mono leading-none select-none">+</span>
+                    <span className="absolute -bottom-1 -right-1 text-[10px] text-[#D84A27] font-mono leading-none select-none">+</span>
+
                     <img
-                      src={PROFILE_DATA.avatarUrl}
+                      src={PROFILE_DATA.avatarUrl || '/engineer-photo.svg'}
                       alt={PROFILE_DATA.name}
-                      referrerPolicy="no-referrer"
-                      className="w-24 h-24 object-cover border border-[#141413]"
+                      onError={(e) => {
+                        if (e.currentTarget.src !== window.location.origin + '/engineer-photo.svg') {
+                          e.currentTarget.src = '/engineer-photo.svg';
+                        }
+                      }}
+                      className="w-28 h-28 object-cover border border-[#DCD7CD] group-hover:scale-[1.02] transition-transform duration-200"
                     />
-                  ) : (
-                    <div className="w-24 h-24 bg-[#141413] text-[#F6F3EC] flex flex-col items-center justify-center p-2 border border-[#141413] shadow-inner">
-                      <span className="font-syne font-extrabold text-2xl tracking-tighter text-[#D84A27]">
-                        SV
-                      </span>
-                      <span className="font-mono text-[9px] text-[#8A867E] tracking-widest mt-1">
-                        EST. 2028
-                      </span>
+
+                    {/* Photo Subtitle Label */}
+                    <div className="absolute bottom-1.5 left-1.5 right-1.5 bg-[#141413]/90 text-[#F6F3EC] px-1 py-0.5 text-[8px] font-mono text-center tracking-widest uppercase">
+                      PORTRAIT // VERIFIED
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* Card Details */}
-                <div className="sm:col-span-8 font-mono text-xs space-y-1.5">
+                <div className="sm:col-span-7 font-mono text-xs space-y-1.5">
                   <div className="font-bold text-sm text-[#141413] font-sans">
                     {PROFILE_DATA.name}
                   </div>

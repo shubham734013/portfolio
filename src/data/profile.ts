@@ -11,8 +11,8 @@ export const PROFILE_DATA = {
   email: 'shubhamvaishnav640@gmail.com',
   github: 'https://github.com/shubhamvaishnav',
   linkedin: 'https://linkedin.com/in/shubhamvaishnav',
-  // Optional profile picture URL. When omitted, the architectural monogram SV // 2028 is beautifully rendered.
-  avatarUrl: undefined,
+  // Engineer identification picture URL (local asset or external photo)
+  avatarUrl: '/profile-photo.png',
   leadBio:
     "I'm Shubham Vaishnav, a computer science student interested in building practical web applications from frontend interactions to backend systems. I enjoy exploring how thoughtful design, reliable APIs, and well-structured software come together to create useful products.",
   corePrinciples: [

@@ -204,6 +204,15 @@ export const Hero: React.FC<HeroProps> = ({ onSelectProject }) => {
                         <motion.a
                           key={proj.id}
                           href={`#${proj.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (onSelectProject) {
+                              onSelectProject(proj.id);
+                            } else {
+                              const el = document.getElementById(proj.id);
+                              if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }}
                           whileHover={{ x: 3 }}
                           transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                           onMouseEnter={() => setHoveredProject(proj.id)}

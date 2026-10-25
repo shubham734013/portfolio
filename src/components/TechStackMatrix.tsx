@@ -85,12 +85,18 @@ export const TechStackMatrix: React.FC = () => {
                         type="button"
                         whileHover={{ scale: 1.01, x: 2 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={() =>
+                        onClick={() => {
                           setSelectedSkill({
                             ...skill,
                             domainName: domain.domainName,
-                          })
-                        }
+                          });
+                          if (window.innerWidth < 1024) {
+                            const el = document.getElementById('tech-spec-inspector');
+                            if (el) {
+                              el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                          }
+                        }}
                         className={`p-3 text-left border font-mono transition-colors flex flex-col justify-between ${
                           isSelected
                             ? 'border-[#141413] bg-[#F6F3EC] shadow-xs ring-1 ring-[#141413]'
@@ -127,7 +133,7 @@ export const TechStackMatrix: React.FC = () => {
           </div>
 
           {/* Right Column: "How I Use It" Concrete Engineering Inspector (4 cols) with AnimatePresence */}
-          <div className="lg:col-span-4 sticky top-24">
+          <div id="tech-spec-inspector" className="lg:col-span-4 sticky top-24">
             <div className="bg-[#141413] text-[#F6F3EC] border border-[#141413] p-5 sm:p-6 space-y-5 shadow-md overflow-hidden">
               <div className="border-b border-[#2C2B28] pb-3">
                 <div className="font-mono text-[11px] text-[#D84A27] uppercase tracking-wider mb-1 flex items-center gap-1.5">
