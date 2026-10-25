@@ -5,6 +5,7 @@ import { ResQPreviewCanvas } from './previews/ResQPreviewCanvas';
 import { GymPreviewCanvas } from './previews/GymPreviewCanvas';
 import { GitBranch, Layers, ArrowUpRight, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
+import { RollingIndex } from './RollingIndex';
 
 interface SelectedWorkProps {
   onInspectProject: (project: Project) => void;
@@ -20,7 +21,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onInspectProject }) 
         {/* Section Index Header */}
         <div className="border-b border-[#DCD7CD] pb-4 flex flex-wrap items-baseline justify-between gap-4">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs font-bold text-[#D84A27]">[ 01 ]</span>
+            <RollingIndex numberStr="01" />
             <h2 className="font-syne text-2xl sm:text-3xl font-extrabold text-[#141413] tracking-tight">
               SELECTED WORK & ARCHITECTURAL SYSTEMS
             </h2>

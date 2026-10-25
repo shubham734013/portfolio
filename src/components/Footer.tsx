@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowUp, GitBranch, Linkedin, Mail, Compass } from 'lucide-react';
 import { PROFILE_DATA } from '../data/profile';
 
+import { LiveClock } from './LiveClock';
+
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -13,8 +15,10 @@ export const Footer: React.FC = () => {
         {/* Top Row: Large Typographic Sign-off */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#2C2B28] pb-8 gap-6">
           <div className="space-y-2">
-            <div className="text-[11px] text-[#D84A27] uppercase tracking-wider">
-              ENGINEERING MONOGRAPH // EDITION 2026
+            <div className="text-[11px] text-[#D84A27] uppercase tracking-wider flex items-center gap-3">
+              <span>ENGINEERING MONOGRAPH // EDITION 2026</span>
+              <span>·</span>
+              <LiveClock className="text-[#3F5E45] font-semibold" />
             </div>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#F6F3EC]">
               SHUBHAM VAISHNAV
@@ -69,8 +73,13 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#certificates" className="text-[#DCD7CD] hover:text-[#D84A27] transition-colors">
+                  05 // Certifications
+                </a>
+              </li>
+              <li>
                 <a href="#contact" className="text-[#DCD7CD] hover:text-[#D84A27] transition-colors">
-                  05 // Initiate Contact
+                  06 // Initiate Contact
                 </a>
               </li>
             </ul>

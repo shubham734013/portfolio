@@ -23,7 +23,8 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
     { id: 'stack', label: '02 Stack', href: '#stack' },
     { id: 'about', label: '03 About', href: '#about' },
     { id: 'journey', label: '04 Journey', href: '#journey' },
-    { id: 'contact', label: '05 Contact', href: '#contact' },
+    { id: 'certificates', label: '05 Certificates', href: '#certificates' },
+    { id: 'contact', label: '06 Contact', href: '#contact' },
   ];
 
   return (

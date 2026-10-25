@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { EXPERIENCES } from '../data/experiences';
 import { ChevronDown, ChevronUp, Calendar, MapPin, Building, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { RollingIndex } from './RollingIndex';
 
 export const ExperienceLedger: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string>('jecrc-btech');
@@ -16,7 +17,7 @@ export const ExperienceLedger: React.FC = () => {
         {/* Section Header */}
         <div className="border-b border-[#DCD7CD] pb-4 flex flex-wrap items-baseline justify-between gap-4">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs font-bold text-[#D84A27]">[ 04 ]</span>
+            <RollingIndex numberStr="04" />
             <h2 className="font-syne text-2xl sm:text-3xl font-extrabold text-[#141413] tracking-tight">
               JOURNEY & EXPERIENCE LEDGER
             </h2>

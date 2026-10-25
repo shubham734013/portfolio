@@ -7,6 +7,7 @@ import { SelectedWork } from './components/SelectedWork';
 import { TechStackMatrix } from './components/TechStackMatrix';
 import { AboutSection } from './components/AboutSection';
 import { ExperienceLedger } from './components/ExperienceLedger';
+import { CertificatesSection } from './components/CertificatesSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
@@ -17,7 +18,7 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['work', 'stack', 'about', 'journey', 'contact'];
+      const sections = ['work', 'stack', 'about', 'journey', 'certificates', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -51,6 +52,7 @@ export default function App() {
         <TechStackMatrix />
         <AboutSection />
         <ExperienceLedger />
+        <CertificatesSection />
         <ContactSection />
       </main>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PROFILE_DATA } from '../data/profile';
 import { MapPin, GraduationCap, Compass, Terminal, Shield, ArrowUpRight } from 'lucide-react';
+import { RollingIndex } from './RollingIndex';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const AboutSection: React.FC = () => {
         {/* Section Header */}
         <div className="border-b border-[#DCD7CD] pb-4 flex flex-wrap items-baseline justify-between gap-4">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs font-bold text-[#D84A27]">[ 03 ]</span>
+            <RollingIndex numberStr="03" />
             <h2 className="font-syne text-2xl sm:text-3xl font-extrabold text-[#141413] tracking-tight">
               ABOUT & CORE ENGINEERING PRINCIPLES
             </h2>

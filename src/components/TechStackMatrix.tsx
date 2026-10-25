@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TECH_DOMAINS } from '../data/techStack';
 import { Code2, Cpu, Database, Globe, Wrench, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { RollingIndex } from './RollingIndex';
 
 export const TechStackMatrix: React.FC = () => {
   const [selectedSkill, setSelectedSkill] = useState<{
@@ -42,7 +43,7 @@ export const TechStackMatrix: React.FC = () => {
         {/* Section Header */}
         <div className="border-b border-[#DCD7CD] pb-4 flex flex-wrap items-baseline justify-between gap-4">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs font-bold text-[#D84A27]">[ 02 ]</span>
+            <RollingIndex numberStr="02" />
             <h2 className="font-syne text-2xl sm:text-3xl font-extrabold text-[#141413] tracking-tight">
               ARCHITECTURE & TECHNICAL STACK MATRIX
             </h2>

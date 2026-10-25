@@ -6,6 +6,7 @@ import { buildMailtoUrl } from '../utils/sanitizer';
 import { PROFILE_DATA } from '../data/profile';
 import { Copy, Check, Send, Mail, MapPin, Clock, ArrowUpRight, AlertCircle, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { RollingIndex } from './RollingIndex';
 
 export const ContactSection: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -115,7 +116,7 @@ export const ContactSection: React.FC = () => {
         {/* Section Header */}
         <div className="border-b border-[#DCD7CD] pb-4 flex flex-wrap items-baseline justify-between gap-4">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs font-bold text-[#D84A27]">[ 05 ]</span>
+            <RollingIndex numberStr="06" />
             <h2 className="font-syne text-2xl sm:text-3xl font-extrabold text-[#141413] tracking-tight">
               INITIATE CONTACT & COLLABORATION
             </h2>
