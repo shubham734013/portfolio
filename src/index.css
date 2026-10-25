@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+@theme {
+  --color-canvas: #F6F3EC;
+  --color-canvas-elevated: #EFECE4;
+  --color-canvas-inverse: #141413;
+  --color-ink-primary: #141413;
+  --color-ink-secondary: #575550;
+  --color-ink-muted: #8A867E;
+  --color-accent-vermilion: #D84A27;
+  --color-accent-vermilion-hover: #B83B1C;
+  --color-accent-olive: #3F5E45;
+  --color-accent-amber: #C87D20;
+  --color-hairline: #DCD7CD;
+  --color-hairline-strong: #141413;
+
+  --font-serif-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-syne: "Syne", sans-serif;
+}
+
+:root {
+  --bg-primary: #F6F3EC;
+  --bg-elevated: #EFECE4;
+  --bg-inverse: #141413;
+  --text-primary: #141413;
+  --text-secondary: #575550;
+  --text-muted: #8A867E;
+  --accent-primary: #D84A27;
+  --accent-primary-hover: #B83B1C;
+  --accent-olive: #3F5E45;
+  --accent-amber: #C87D20;
+  --border-subtle: #DCD7CD;
+  --border-strong: #141413;
+}
+
+/* Custom scrollbar and accessibility adjustments */
+html {
+  scroll-behavior: smooth;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Monograph structural hairlines */
+.border-hairline {
+  border-color: #DCD7CD;
+}
+
+.border-b-hairline {
+  border-bottom-color: #DCD7CD;
+}
+
+.border-t-hairline {
+  border-top-color: #DCD7CD;
+}
+
+.border-l-hairline {
+  border-left-color: #DCD7CD;
+}
+
+.border-r-hairline {
+  border-right-color: #DCD7CD;
+}
+
+/* Custom swiper styling for architectural slides */
+.swiper-pagination-bullet {
+  background: #141413 !important;
+  opacity: 0.25;
+  border-radius: 0 !important;
+  width: 18px !important;
+  height: 3px !important;
+  transition: all 0.2s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #D84A27 !important;
+  opacity: 1 !important;
+  width: 28px !important;
+}
+
+/* Hide scrollbars for crisp horizontal strips while retaining scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes laserScan {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 95%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+.animate-laser {
+  animation: laserScan 2.4s ease-in-out infinite;
+}
+
